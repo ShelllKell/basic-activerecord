@@ -22,13 +22,13 @@ p last_customer
 
 p '*' * 20
 
-cust_three = Customer.find(3)
-p cust_three
+customers = Customer.find(3)
+p customers
 
 p '*' * 20
 
-colorado = Customer.where(state: 'Colorado')
-colorado.each do |state|
+customers = Customer.where(state: 'Colorado')
+customers.each do |state|
   puts state.inspect
 end
 
@@ -48,7 +48,25 @@ end
 
 p '*' * 20
 
-customers = Customer.order(:name :desc)
+customers = Customer.order(name: :desc)
 customers.each do |cust|
   puts cust.inspect
 end
+
+p '*' * 20
+
+customers = Item.all
+customers.each do |cust|
+  p cust
+end
+
+p '*' * 20
+
+customers = Item.where(id: [7,8,9])
+customers.each do |cust|
+  p cust
+end
+
+p '*' * 20
+
+
