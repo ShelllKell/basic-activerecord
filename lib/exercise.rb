@@ -60,12 +60,12 @@ customers.each do |cust|
   p cust
 end
 
-# p '*' * 20
+p '*' * 20
 
-# customers = Item.exists?(['name LIKE ?', "boot"])
-# customers.each do |cust|
-#   p cust
-# end
+customers = Item.where("name like 'boot%'")
+customers.each do |cust|
+  p cust
+end
 
 p '*' * 20
 
@@ -113,3 +113,57 @@ customers = Order.sum(:amount)
  p customers.to_s.to_f
 
 p '*' * 20
+
+customers = Order.where(id: 1).sum(:amount)
+p customers.to_s.to_f
+
+p '*' * 20
+
+customers = Order.average(:amount)
+p customers.round(2).to_s.to_f
+
+p '*' * 20
+
+customers = Order.minimum(:amount)
+p customers.to_s.to_f
+
+p '*' * 20
+
+customers = Order.maximum(:amount)
+p customers.to_s.to_f
+
+# p '*' * 20
+#
+# customers = Order.all do |cust|
+#   cust.sum(:amount).where(:id)
+# end
+# p customers.to_s.to_f
+#
+# p '*' * 50
+#
+# customers = Order.order(:id, :asc).sum(:amount)
+# p customers.to_s.to_f
+
+p '*' * 20
+
+customers = Customer.where(state: 'Colorado', city: 'Rigobertoside')
+  customers.each do |cust|
+    p cust
+  end
+
+p '*' * 20
+
+customers = Customer.where("state = 'Ohio' OR state = 'Virginia'")
+customers.each do |cust|
+  p cust
+end
+
+p '*' * 20
+
+customers = Item.find_by(id: 3).update(description: "board01")
+p customers
+
+p '*' * 20
+
+customers = Item.create(name: "kayalk01", description: "one person river kayak")
+p customers
